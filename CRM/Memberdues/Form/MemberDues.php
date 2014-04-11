@@ -99,6 +99,7 @@ class CRM_Memberdues_Form_MemberDues extends CRM_Core_Form
 
     /** @var int $total Total contribution amount */
     $total = (int)reset($dbResult->fetchRow());
+
     return $total;
   }
 
@@ -106,18 +107,21 @@ class CRM_Memberdues_Form_MemberDues extends CRM_Core_Form
    * Return end date in standard MySQL format
    *
    * @param $values
+   *
    * @return string
    */
   protected function getEndDate($values)
   {
+    $endDate = null;
+
     if (array_key_exists('end_date', $values)) {
       $endDate = $this->getMysqlDate($values['end_date']);
-      return $endDate;
     } else {
       $dateTime = new DateTime();
       $endDate = $dateTime->format('Y-m-d 00:00:00');
-      return $endDate;
     }
+
+    return $endDate;
   }
 
   /**

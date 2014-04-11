@@ -108,11 +108,11 @@ function memberdues_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
 }
 
 /**
- * Implementation of hook_civicrm_post
+ * Implementation of hook_civicrm_tabs
+ * @param $tabs
+ *
+ * @param $contactID
  */
-function memberdues_civicrm_post($op, $objectName, $objectId, &$objectRef) {
-}
-
 function memberdues_civicrm_tabs(&$tabs, $contactID) {
 	$url = CRM_Utils_System::url('civicrm/contact/view/memberdues', 'reset=1&snippet=1&force=1&cid=' . $contactID);
 
