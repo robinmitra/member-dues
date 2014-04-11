@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<extension key="com.robinmitra.memberdues" type="module">
+  <file>memberdues</file>
+  <name>Member Dues</name>
+  <description>This extension adds a tab on contact record to show total of all contributions of type 'member dues'</description>
+  <license>GPL-2.0</license>
+  <maintainer>
+    <author>Robin Mitra</author>
+    <email>robinmitra1@gmail.com</email>
+  </maintainer>
+  <releaseDate>2014-04-11</releaseDate>
+  <version>0.1</version>
+  <develStage>pre-alpha</develStage>
+  <compatibility>
+    <ver>4.2</ver>
+  </compatibility>
+  <comments>This is a development module - do not use on production</comments>
+  <civix>
+    <namespace>CRM/Memberdues</namespace>
+  </civix>
+</extension>
