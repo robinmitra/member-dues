@@ -106,3 +106,20 @@ function memberdues_civicrm_caseTypes(&$caseTypes) {
 function memberdues_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
   _memberdues_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
+
+/**
+ * Implementation of hook_civicrm_post
+ */
+function memberdues_civicrm_post($op, $objectName, $objectId, &$objectRef) {
+}
+
+function memberdues_civicrm_tabs(&$tabs, $contactID) {
+	$url = CRM_Utils_System::url('civicrm/contact/view/memberdues', 'reset=1&snippet=1&force=1&cid=' . $contactID);
+
+	$tabs[] = array(
+		'id' => 'memberDues',
+		'url' => $url,
+		'title' => 'Member Dues',
+		'weight' => 500
+	);
+}
