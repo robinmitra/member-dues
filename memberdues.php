@@ -109,17 +109,30 @@ function memberdues_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
 
 /**
  * Implementation of hook_civicrm_tabs
+ *
  * @param $tabs
  *
  * @param $contactID
  */
 function memberdues_civicrm_tabs(&$tabs, $contactID) {
-	$url = CRM_Utils_System::url('civicrm/contact/view/memberdues', 'reset=1&snippet=1&force=1&cid=' . $contactID);
+  if (CRM_Core_Permission::check('show member dues')) {
+    $url = CRM_Utils_System::url('civicrm/contact/view/memberdues', 'reset=1&snippet=1&force=1&cid=' . $contactID);
 
-	$tabs[] = array(
-		'id' => 'memberDues',
-		'url' => $url,
-		'title' => 'Member Dues',
-		'weight' => 500
-	);
+    $tabs[] = array(
+      'id' => 'memberDues',
+      'url' => $url,
+      'title' => 'Member Dues',
+      'weight' => 500
+    );
+  }
+}
+
+/**
+ * Implementation of hook_civicrm_permission
+ *
+ * @param array $permissions
+ */
+function memberdues_civicrm_permission( array &$permissions ) {
+  $prefix = ts('CiviCRM Member Dues') . ': ';
+  $permissions['show member dues'] = $prefix . 'show member dues';
 }
